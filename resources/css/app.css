@@ -1,5 +1,18 @@
 @import "tailwindcss";
 
+@theme {
+  --color-cobalt-blue: #193497;
+  --color-click-lime: #d2f801;
+  --color-purple-grape: #7209b7;
+  --color-redline: #f91f01;
+  --color-black-charcoal: #171718;
+  --color-hot-pink: #F72585;
+  --color-click-white: #e9ebf0;
+  
+  --font-family-poppins: 'Poppins', sans-serif;
+  --font-family-thunderhouse: 'Thunderhousepro', sans-serif;
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 
 /* Grunge Texture */
