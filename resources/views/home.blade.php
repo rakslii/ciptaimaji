@@ -1,14 +1,14 @@
 @extends('layouts.app')
 
-@section('title', 'Home - Tirta Anugrah Grunge Pop')
+@section('title', 'Home - Cipta Imaji')
 
 @section('content')
 
 @php
-// Data Produk - Ganti 'image' sesuai nama file gambar lu
+// Data Produk Terlaris (Top 4 aja)
 $products = [
     [
-        'name' => 'Korek Cricket',
+        'name' => 'Korek Cricket Custom',
         'price' => 25000,
         'sold' => 150,
         'image' => 'korek.jpg'
@@ -30,41 +30,29 @@ $products = [
         'price' => 75000,
         'sold' => 120,
         'image' => 'kalender-custom.jpg'
-    ],
-    [
-        'name' => 'Tumbler Custom Print',
-        'price' => 85000,
-        'sold' => 95,
-        'image' => 'tumbler-custom.jpg'
-    ],
-    [
-        'name' => 'ID Card & Lanyard Set',
-        'price' => 45000,
-        'sold' => 200,
-        'image' => 'idcard-lanyard.jpg'
-    ],
-    [
-        'name' => 'Cutting Sticker Motor',
-        'price' => 50000,
-        'sold' => 180,
-        'image' => 'cutting-sticker.jpg'
-    ],
-    [
-        'name' => 'Spanduk Banner Flexi',
-        'price' => 120000,
-        'sold' => 75,
-        'image' => 'spanduk-flexi.jpg'
     ]
 ];
 
-// Data Kategori
-$categories = [
-    ['name' => 'STIKER', 'icon' => '🏷️'],
-    ['name' => 'PLAKAT', 'icon' => '🏆'],
-    ['name' => 'BANNER', 'icon' => '📢'],
-    ['name' => 'AKRILIK', 'icon' => '💎'],
-    ['name' => 'KALENDER', 'icon' => '📅'],
-    ['name' => 'TUMBLER', 'icon' => '🥤']
+// Data Testimoni
+$testimonials = [
+    [
+        'name' => 'Budi Santoso',
+        'company' => 'PT. Maju Jaya',
+        'rating' => 5,
+        'text' => 'Kualitas cetak banner sangat memuaskan! Warna tajam dan bahan tahan lama. Pasti order lagi!'
+    ],
+    [
+        'name' => 'Siti Nurhaliza',
+        'company' => 'Toko Berkah',
+        'rating' => 5,
+        'text' => 'Pelayanan cepat dan hasil maksimal. Stiker vinyl-nya keren banget, tahan air pula!'
+    ],
+    [
+        'name' => 'Andi Wijaya',
+        'company' => 'Warung Nasi Padang',
+        'rating' => 5,
+        'text' => 'Harga terjangkau tapi kualitas premium. Spanduk untuk warung saya awet banget!'
+    ]
 ];
 @endphp
 
@@ -108,6 +96,8 @@ $categories = [
                 </div>
             </div>
 
+            
+
             <!-- Right Content - Hitam dengan accent -->
             <div class="bg-black-charcoal p-8 md:p-16 flex flex-col justify-center relative">
                 <div class="absolute inset-0 grunge-texture opacity-20"></div>
@@ -147,34 +137,89 @@ $categories = [
     </div>
 </section>
 
-<!-- Categories -->
+<!-- Mengapa Memilih Cipta Imaji -->
 <section class="container mx-auto px-4 py-16">
-    <div class="mb-12">
+    <div class="mb-12 text-center">
         <h2 class="font-poppins font-black text-4xl md:text-5xl text-black-charcoal inline-block">
-            KATEGORI PRODUK
+            MENGAPA MEMILIH CIPTA IMAJI?
         </h2>
-        <div class="bg-click-lime h-2 w-32 mt-2 rounded-full"></div>
+        <div class="bg-cobalt-blue h-2 w-32 mt-2 rounded-full mx-auto"></div>
+        <p class="font-poppins text-lg text-gray-600 mt-4">
+            Partner terpercaya untuk semua kebutuhan printing Anda
+        </p>
     </div>
 
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-        @foreach($categories as $index => $category)
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
         @php
-        $bgColors = ['bg-click-white', 'bg-click-white', 'bg-click-white', 'bg-click-white', 'bg-click-white', 'bg-click-white'];
-        $accentColors = ['border-click-lime', 'border-hot-pink', 'border-purple-grape', 'border-cobalt-blue', 'border-redline', 'border-click-lime'];
+        $advantages = [
+            [
+                'icon' => '⚡',
+                'title' => 'Proses Cepat',
+                'desc' => 'Pengerjaan cepat tanpa mengurangi kualitas. Urgent? Kami siap!',
+                'color' => 'bg-click-lime'
+            ],
+            [
+                'icon' => '💎',
+                'title' => 'Kualitas Premium',
+                'desc' => 'Menggunakan bahan & teknologi terbaik untuk hasil maksimal',
+                'color' => 'bg-hot-pink'
+            ],
+            [
+                'icon' => '💰',
+                'title' => 'Harga Bersaing',
+                'desc' => 'Harga terjangkau dengan kualitas yang tidak perlu diragukan',
+                'color' => 'bg-purple-grape'
+            ],
+            [
+                'icon' => '🎨',
+                'title' => 'Desain Gratis',
+                'desc' => 'Tim desainer profesional siap membantu mewujudkan ide Anda',
+                'color' => 'bg-cobalt-blue'
+            ]
+        ];
         @endphp
-        <a href="#" class="group">
-            <div class="{{ $bgColors[$index] }} p-6 rounded-2xl border-4 {{ $accentColors[$index] }} transform hover:scale-105 hover:-rotate-2 transition shadow-brutal-lg relative overflow-hidden">
-                <div class="absolute inset-0 grunge-texture opacity-10"></div>
-                <div class="relative text-center">
-                    <div class="text-6xl mb-3 transform group-hover:scale-125 transition">
-                        {{ $category['icon'] }}
-                    </div>
-                    <p class="font-poppins font-black text-black-charcoal text-base">
-                        {{ $category['name'] }}
-                    </p>
-                </div>
+
+        @foreach($advantages as $advantage)
+        <div class="bg-click-white rounded-2xl p-8 border-4 border-black-charcoal shadow-brutal transform hover:scale-105 hover:-rotate-2 transition relative group">
+            <div class="absolute inset-0 grunge-texture opacity-10 rounded-2xl"></div>
+            
+            <!-- Icon Badge -->
+            <div class="inline-block {{ $advantage['color'] }} w-16 h-16 rounded-2xl border-4 border-black-charcoal flex items-center justify-center text-3xl mb-4 shadow-brutal transform -rotate-3 group-hover:rotate-0 transition">
+                {{ $advantage['icon'] }}
             </div>
-        </a>
+
+            <div class="relative">
+                <h3 class="font-poppins font-black text-xl text-black-charcoal mb-3">
+                    {{ $advantage['title'] }}
+                </h3>
+                <p class="font-poppins text-sm text-gray-600 leading-relaxed">
+                    {{ $advantage['desc'] }}
+                </p>
+            </div>
+        </div>
+        @endforeach
+    </div>
+
+    <!-- Stats Section -->
+    <div class="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto mt-12">
+        @php
+        $stats = [
+            ['number' => '15+', 'label' => 'Tahun Pengalaman', 'icon' => '📅'],
+            ['number' => '5000+', 'label' => 'Pelanggan Puas', 'icon' => '😊'],
+            ['number' => '10.000+', 'label' => 'Produk Terjual', 'icon' => '📦']
+        ];
+        @endphp
+
+        @foreach($stats as $stat)
+        <div class="bg-black-charcoal rounded-2xl p-6 border-4 border-click-lime shadow-brutal text-center transform hover:scale-105 transition">
+            <div class="text-4xl mb-2">{{ $stat['icon'] }}</div>
+            <p class="font-poppins font-black text-4xl text-click-lime mb-2">
+                {{ $stat['number'] }}
+            </p>
+            <p class="font-poppins font-bold text-click-white">
+                {{ $stat['label'] }}
+            </p>
+        </div>
         @endforeach
     </div>
 </section>
@@ -242,6 +287,111 @@ $categories = [
     </div>
 </section>
 
+<!-- Cara Pemesanan -->
+<section class="container mx-auto px-4 py-16">
+    <div class="mb-12 text-center">
+        <h2 class="font-poppins font-black text-4xl md:text-5xl text-black-charcoal inline-block">
+            CARA PEMESANAN
+        </h2>
+        <div class="bg-purple-grape h-2 w-32 mt-2 rounded-full mx-auto"></div>
+        <p class="font-poppins text-lg text-gray-600 mt-4">
+            Mudah banget! Cuma 4 langkah aja
+        </p>
+    </div>
+
+    <div class="grid md:grid-cols-4 gap-6 max-w-6xl mx-auto">
+        @php
+        $steps = [
+            ['num' => '1', 'icon' => '💬', 'title' => 'Konsultasi', 'desc' => 'Hubungi kami via WhatsApp atau telepon untuk konsultasi gratis', 'color' => 'bg-click-lime'],
+            ['num' => '2', 'icon' => '📋', 'title' => 'Kirim Detail', 'desc' => 'Kirimkan desain & spesifikasi produk yang diinginkan', 'color' => 'bg-hot-pink'],
+            ['num' => '3', 'icon' => '✅', 'title' => 'Konfirmasi', 'desc' => 'Kami konfirmasi harga, waktu produksi, dan pembayaran', 'color' => 'bg-purple-grape'],
+            ['num' => '4', 'icon' => '🚚', 'title' => 'Terima Produk', 'desc' => 'Produk jadi dikirim atau bisa diambil langsung', 'color' => 'bg-cobalt-blue']
+        ];
+        @endphp
+
+        @foreach($steps as $step)
+        <div class="bg-click-white rounded-2xl p-6 border-4 border-black-charcoal shadow-brutal transform hover:scale-105 hover:-rotate-2 transition relative">
+            <div class="absolute inset-0 grunge-texture opacity-10 rounded-2xl"></div>
+            
+            <!-- Number Badge -->
+            <div class="absolute -top-4 -left-4 {{ $step['color'] }} w-12 h-12 rounded-full border-4 border-black-charcoal flex items-center justify-center shadow-brutal">
+                <span class="font-poppins font-black text-2xl text-black-charcoal">{{ $step['num'] }}</span>
+            </div>
+
+            <div class="relative pt-4">
+                <div class="text-5xl mb-4 text-center">{{ $step['icon'] }}</div>
+                <h3 class="font-poppins font-black text-xl text-black-charcoal mb-2 text-center">
+                    {{ $step['title'] }}
+                </h3>
+                <p class="font-poppins text-sm text-gray-600 text-center">
+                    {{ $step['desc'] }}
+                </p>
+            </div>
+        </div>
+        @endforeach
+    </div>
+
+    <!-- CTA Button -->
+    <div class="text-center mt-12">
+        <button class="bg-black-charcoal hover:bg-click-lime text-click-white hover:text-black-charcoal px-12 py-5 rounded-2xl font-poppins font-black text-xl transform hover:scale-105 transition shadow-brutal-lg border-4 border-black-charcoal group inline-flex items-center gap-3">
+            <span class="text-2xl">📱</span>
+            PESAN SEKARANG VIA WHATSAPP
+        </button>
+    </div>
+</section>
+
+<!-- Kata Pelanggan -->
+<section class="bg-gray-50 py-16">
+    <div class="container mx-auto px-4">
+        <div class="mb-12 text-center">
+            <h2 class="font-poppins font-black text-4xl md:text-5xl text-black-charcoal inline-block">
+                KATA PELANGGAN KAMI
+            </h2>
+            <div class="bg-hot-pink h-2 w-32 mt-2 rounded-full mx-auto"></div>
+            <p class="font-poppins text-lg text-gray-600 mt-4">
+                Apa kata mereka yang sudah order?
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            @foreach($testimonials as $index => $testi)
+            <div class="bg-click-white rounded-2xl p-6 border-4 border-black-charcoal shadow-brutal transform hover:scale-105 transition">
+                <div class="absolute inset-0 grunge-texture opacity-10 rounded-2xl"></div>
+                
+                <!-- Rating Stars -->
+                <div class="flex gap-1 mb-4">
+                    @for($i = 0; $i < $testi['rating']; $i++)
+                    <span class="text-2xl">⭐</span>
+                    @endfor
+                </div>
+
+                <!-- Testimonial Text -->
+                <p class="font-poppins text-gray-700 mb-6 italic">
+                    "{{ $testi['text'] }}"
+                </p>
+
+                <!-- Customer Info -->
+                <div class="border-t-2 border-gray-200 pt-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 bg-click-lime rounded-full border-3 border-black-charcoal flex items-center justify-center text-2xl">
+                            👤
+                        </div>
+                        <div>
+                            <p class="font-poppins font-black text-black-charcoal">
+                                {{ $testi['name'] }}
+                            </p>
+                            <p class="font-poppins text-sm text-gray-500">
+                                {{ $testi['company'] }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        </div>
+    </div>
+</section>
+
 <!-- Promo Banner -->
 <section class="container mx-auto px-4 py-16">
     <div class="bg-black-charcoal p-12 md:p-16 rounded-3xl border-8 border-click-lime shadow-brutal-xl relative overflow-hidden">
@@ -275,3 +425,4 @@ $categories = [
     </div>
 </section>
 @endsection
+
