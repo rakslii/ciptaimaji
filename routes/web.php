@@ -7,13 +7,13 @@ Route::get('/', function () {
 })->name('home');
 
 Route::get('/produk', function () {
-    return view('produk');
+    return view('product.produk');
 })->name('produk');
 
 Route::get('/keranjang', function () {
-    return view('keranjang');
+    return view('cart.keranjang');
 })->name('keranjang'); // TAMBAH INI
 
 Route::get('/profile', function () {
-    return view('profile');
+    return view('profile.profile');
 })->name('profile');
