@@ -1,4 +1,6 @@
-<header class="relative overflow-hidden">
+<header 
+    id="mainNavbar"
+    class="sticky top-0 z-50 transition-transform duration-300">
     <!-- Grunge Background Pattern -->
     <div class="absolute inset-0 opacity-10 grunge-texture"></div>
 
@@ -8,8 +10,8 @@
             <div class="flex items-center justify-between py-2">
                 <!-- Contact -->
                 <div class="flex items-center space-x-4 text-click-white text-xs font-poppins font-semibold">
-                    <span>☎ (022) 25362571</span>
-                    <span>📱 085314150100</span>
+                    <span>☎ xxxxxxxxxx</span>
+                    <span>📱 085971620263</span>
                 </div>
 
                 <!-- Auth -->
@@ -113,3 +115,22 @@
     animation: marquee 20s linear infinite;
 }
 </style>
+
+<script>
+    let lastScrollTop = 0;
+    const navbar = document.getElementById('mainNavbar');
+
+    window.addEventListener('scroll', () => {
+        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+        if (scrollTop > lastScrollTop && scrollTop > 100) {
+            // SCROLL KE BAWAH → NGUMPET
+            navbar.classList.add('-translate-y-full');
+        } else {
+            // SCROLL KE ATAS → MUNCUL
+            navbar.classList.remove('-translate-y-full');
+        }
+
+        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+    });
+</script>

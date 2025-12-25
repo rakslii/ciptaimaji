@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CartController;
 
 Route::get('/', function () {
     return view('home');
@@ -12,8 +13,10 @@ Route::get('/produk', function () {
 
 Route::get('/keranjang', function () {
     return view('keranjang');
-})->name('keranjang'); // TAMBAH INI
+})->name('keranjang');
 
 Route::get('/profile', function () {
     return view('profile');
 })->name('profile');
+
+Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');

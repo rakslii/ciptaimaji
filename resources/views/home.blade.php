@@ -276,9 +276,17 @@ $testimonials = [
                             </span>
                         </div>
 
-                        <button class="w-full bg-black-charcoal hover:bg-click-lime text-click-white hover:text-black-charcoal py-3 rounded-xl font-poppins font-black text-base transform hover:scale-105 transition shadow-brutal border-4 border-black-charcoal">
-                            BELI SEKARANG
-                        </button>
+                        <button
+    onclick="openModal(
+        '{{ $product['name'] }}',
+        {{ $product['price'] }},
+        'Produk {{ $product['name'] }} kualitas premium dari Cipta Imaji'
+    )"
+    class="w-full bg-black-charcoal hover:bg-click-lime text-click-white hover:text-black-charcoal py-3 rounded-xl font-poppins font-black text-base transform hover:scale-105 transition shadow-brutal border-4 border-black-charcoal"
+>
+    BELI SEKARANG
+</button>
+
                     </div>
                 </div>
             </div>
@@ -424,5 +432,9 @@ $testimonials = [
         </div>
     </div>
 </section>
+
+{{-- MODAL DETAIL PRODUK --}}
+@include('components.produkdetail')
+
 @endsection
 

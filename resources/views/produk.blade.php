@@ -233,13 +233,13 @@ $products = [
                             </span>
                         </div>
 
-                        <button 
-                            onclick="pesanWhatsApp('{{ $product['name'] }}', '{{ number_format($product['price'], 0, ',', '.') }}')"
-                            class="w-full bg-black-charcoal hover:bg-click-lime text-click-white hover:text-black-charcoal py-3 rounded-xl font-poppins font-black text-base transform hover:scale-105 transition shadow-brutal border-4 border-black-charcoal flex items-center justify-center gap-2"
-                        >
-                            <span class="text-xl">📱</span>
-                            PESAN SEKARANG
-                        </button>
+                       <button 
+    onclick="openModal('{{ $product['name'] }}', {{ $product['price'] }}, '{{ $product['desc'] }}')"
+    class="w-full bg-black-charcoal hover:bg-click-lime text-click-white hover:text-black-charcoal py-3 rounded-xl font-poppins font-black text-base transform hover:scale-105 transition shadow-brutal border-4 border-black-charcoal flex items-center justify-center gap-2"
+>
+    <span class="text-xl">📱</span>
+    PESAN SEKARANG
+</button>
                     </div>
                 </div>
             </div>
@@ -342,5 +342,8 @@ document.querySelector('.tab-btn.active').classList.add('bg-click-lime', 'text-b
     transform: scale(1.05);
 }
 </style>
+
+{{-- Include Modal Component --}}
+@include('components.produkdetail')
 
 @endsection
